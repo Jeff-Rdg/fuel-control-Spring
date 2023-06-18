@@ -9,6 +9,24 @@ public enum VehicleType {
     BACKHOELOADER(6),
     MIXED(7);
 
-    VehicleType(int number) {
+    private int code;
+
+    VehicleType(int code) {
+        this.code = code;
     }
+
+    public int getCode() {
+        return code;
+    }
+
+    public static VehicleType valueOf(int code) {
+        for (VehicleType type : VehicleType.values()
+        ) {
+            if (type.getCode() == code) {
+                return type;
+            }
+        }
+        throw new IllegalArgumentException("Invalid Vehicle Type.");
+    }
+
 }
