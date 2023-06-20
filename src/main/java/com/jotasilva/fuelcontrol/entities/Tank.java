@@ -23,7 +23,9 @@ public class Tank implements Serializable {
     private Double fuelQuantity;
 
     @OneToMany(mappedBy = "tank")
-    private List<TankFuel> fuelTanks = new ArrayList<>();
+    private List<TankFuel> tankFuels = new ArrayList<>();
+    @ManyToMany(mappedBy = "tank")
+    private List<VehicleTank> vehicleTanks = new ArrayList<>();
 
     //region constructors
     public Tank() {
@@ -56,11 +58,15 @@ public class Tank implements Serializable {
         this.fuelQuantity = fuelQuantity;
     }
 
-    public List<TankFuel> getFuelTanks() {
-        return fuelTanks;
+    public List<TankFuel> getTankFuels() {
+        return tankFuels;
     }
 
-//endregion
+    public List<VehicleTank> getVehicleTanks() {
+        return vehicleTanks;
+    }
+
+    //endregion
 
     //region Equals and Hashcode
     @Override

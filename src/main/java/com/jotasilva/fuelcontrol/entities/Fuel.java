@@ -63,6 +63,11 @@ public class Fuel implements Serializable {
     public void setInvoiceNumber(String invoiceNumber) {
         this.invoiceNumber = invoiceNumber;
     }
+
+    public List<TankFuel> getTankFuels() {
+        return tankFuels;
+    }
+
     //endregion
 
     //region hashcode and equals

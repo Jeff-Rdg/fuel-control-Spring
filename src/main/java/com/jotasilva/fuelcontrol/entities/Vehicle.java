@@ -9,6 +9,8 @@ import org.hibernate.Length;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
@@ -41,6 +43,9 @@ public class Vehicle implements Serializable {
     @ManyToOne
     @JoinColumn(name = "owner_id")
     private Owner owner;
+
+    @ManyToMany(mappedBy = "vehicle")
+    private List<VehicleTank> vehicleTanks = new ArrayList<>();
     //endregion
 
     //region constructors
@@ -119,6 +124,10 @@ public class Vehicle implements Serializable {
 
     public void setDesmobilizationDate(LocalDate desmobilizationDate) {
         this.desmobilizationDate = desmobilizationDate;
+    }
+
+    public List<VehicleTank> getVehicleTanks() {
+        return vehicleTanks;
     }
 
     // endregion
