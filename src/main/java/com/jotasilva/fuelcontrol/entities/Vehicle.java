@@ -1,26 +1,42 @@
 package com.jotasilva.fuelcontrol.entities;
 
 import com.jotasilva.fuelcontrol.entities.enums.VehicleType;
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.Size;
+import org.hibernate.Length;
 
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Objects;
 import java.util.UUID;
 
+@Entity
 public class Vehicle implements Serializable {
 
     //region Attributes
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
+    @Size(max = 50)
     private String active;
+    @Size(min = 7, max = 7)
     private String plate;
+    @Column(length = 30)
     private Long odometer;
+    @NotNull
     private Integer vehicleType;
+    @NotNull
     private Boolean isMobilized;
+    @Column(nullable = false)
     private LocalDate mobilizationDate;
+    @Column(nullable = true)
     private LocalDate desmobilizationDate;
     //endregion
 
     //region relations
+    @ManyToOne
+    @JoinColumn(name = "owner_id")
     private Owner owner;
     //endregion
 
