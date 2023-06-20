@@ -1,11 +1,12 @@
 package com.jotasilva.fuelcontrol.entities;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
-public class Owner {
+public class Owner implements Serializable {
     private UUID id;
     private String cnpj;
     private String corporateName;
