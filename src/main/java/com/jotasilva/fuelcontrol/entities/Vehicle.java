@@ -8,6 +8,8 @@ import java.util.Objects;
 import java.util.UUID;
 
 public class Vehicle implements Serializable {
+
+    //region Attributes
     private UUID id;
     private String active;
     private String plate;
@@ -16,10 +18,11 @@ public class Vehicle implements Serializable {
     private Boolean isMobilized;
     private LocalDate mobilizationDate;
     private LocalDate desmobilizationDate;
+    //endregion
 
-
-    // relations
+    //region relations
     private Owner owner;
+    //endregion
 
     //region constructors
     public Vehicle() {
