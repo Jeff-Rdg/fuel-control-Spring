@@ -1,5 +1,6 @@
 package com.jotasilva.fuelcontrol.entities;
 
+import com.jotasilva.fuelcontrol.entities.enums.Situation;
 import com.jotasilva.fuelcontrol.entities.enums.VehicleType;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
@@ -25,9 +26,11 @@ public class Vehicle implements Serializable {
     @Column(length = 30)
     private Long odometer;
     @NotNull
-    private Integer vehicleType;
+    @Enumerated
+    private VehicleType vehicleType;
     @NotNull
-    private Boolean isMobilized;
+    @Enumerated
+    private Situation situation;
     @Column(nullable = false)
     private LocalDate mobilizationDate;
     @Column(nullable = true)
@@ -87,21 +90,19 @@ public class Vehicle implements Serializable {
     }
 
     public VehicleType getVehicleType() {
-        return VehicleType.valueOf(vehicleType);
+        return vehicleType;
     }
 
     public void setVehicleType(VehicleType vehicleType) {
-        if (vehicleType != null) {
-            this.vehicleType = vehicleType.getCode();
-        }
+        this.vehicleType = vehicleType;
     }
 
-    public Boolean getMobilized() {
-        return isMobilized;
+    public Situation getSituation() {
+        return situation;
     }
 
-    public void setMobilized(Boolean mobilized) {
-        isMobilized = mobilized;
+    public void setSituation(Situation situation) {
+        this.situation = situation;
     }
 
     public LocalDate getMobilizationDate() {
