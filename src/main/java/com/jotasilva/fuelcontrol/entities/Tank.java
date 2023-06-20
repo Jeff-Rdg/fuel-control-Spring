@@ -1,16 +1,32 @@
 package com.jotasilva.fuelcontrol.entities;
 
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PositiveOrZero;
+
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
+@Entity
 public class Tank implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
+    @NotNull
+    @PositiveOrZero
     private Double capacity;
+    @NotNull
+    @PositiveOrZero
     private Double fuelQuantity;
 
+    @OneToMany(mappedBy = "tank")
+    private List<TankFuel> fuelTanks = new ArrayList<>();
+
     //region constructors
-    public Tank(){
+    public Tank() {
 
     }
     //endregion
@@ -39,7 +55,12 @@ public class Tank implements Serializable {
     public void setFuelQuantity(Double fuelQuantity) {
         this.fuelQuantity = fuelQuantity;
     }
-    //endregion
+
+    public List<TankFuel> getFuelTanks() {
+        return fuelTanks;
+    }
+
+//endregion
 
     //region Equals and Hashcode
     @Override

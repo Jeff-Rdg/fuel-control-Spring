@@ -1,15 +1,28 @@
 package com.jotasilva.fuelcontrol.entities;
 
+import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import jakarta.validation.constraints.PositiveOrZero;
+
 import java.io.Serializable;
 import java.util.Objects;
 import java.util.UUID;
 
+@Entity
 public class TankFuel implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
-    private Tank tank;
-    private Fuel fuel;
+    @NotNull
+    @PositiveOrZero
     private Double quantity;
+    @NotNull
+    @PositiveOrZero
     private Double unitPrice;
+    @ManyToOne
+    private Tank tank;
+    @ManyToOne
+    private Fuel fuel;
 
     //region constructors
     public TankFuel(){
