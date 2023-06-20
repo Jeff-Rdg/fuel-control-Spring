@@ -13,7 +13,7 @@ public class Vehicle implements Serializable {
     private UUID id;
     private String active;
     private String plate;
-    private Double odometer;
+    private Long odometer;
     private Integer vehicleType;
     private Boolean isMobilized;
     private LocalDate mobilizationDate;
@@ -54,11 +54,11 @@ public class Vehicle implements Serializable {
         this.plate = plate;
     }
 
-    public Double getOdometer() {
+    public Long getOdometer() {
         return odometer;
     }
 
-    public void setOdometer(Double odometer) {
+    public void setOdometer(Long odometer) {
         this.odometer = odometer;
     }
 
