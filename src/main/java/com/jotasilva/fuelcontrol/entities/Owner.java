@@ -1,17 +1,26 @@
 package com.jotasilva.fuelcontrol.entities;
 
+import jakarta.persistence.*;
+import jakarta.validation.constraints.Size;
+
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 import java.util.UUID;
 
+@Entity
 public class Owner implements Serializable {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
+    @Size(min = 14, max = 14, message = "O campo CNPJ deve ter 14 caracteres.")
     private String cnpj;
+    @Size(max = 150)
     private String corporateName;
 
     //relations
+    @OneToMany(mappedBy = "owner", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Vehicle> vehicles = new ArrayList<>();
 
     //region constructors
