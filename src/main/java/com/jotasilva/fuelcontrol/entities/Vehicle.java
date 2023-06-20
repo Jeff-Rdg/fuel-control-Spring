@@ -21,7 +21,7 @@ public class Vehicle implements Serializable {
     // relations
     private Owner owner;
 
-    //region constructores
+    //region constructors
     public Vehicle() {
     }
     //endregion
