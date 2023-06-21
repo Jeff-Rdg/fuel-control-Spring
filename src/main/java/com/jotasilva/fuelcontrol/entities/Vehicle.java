@@ -44,7 +44,7 @@ public class Vehicle implements Serializable {
     @JoinColumn(name = "owner_id")
     private Owner owner;
 
-    @ManyToMany(mappedBy = "vehicle")
+    @OneToMany(mappedBy = "vehicle")
     private List<VehicleTank> vehicleTanks = new ArrayList<>();
     //endregion
 

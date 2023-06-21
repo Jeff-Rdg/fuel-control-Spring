@@ -24,7 +24,7 @@ public class Tank implements Serializable {
 
     @OneToMany(mappedBy = "tank")
     private List<TankFuel> tankFuels = new ArrayList<>();
-    @ManyToMany(mappedBy = "tank")
+    @OneToMany(mappedBy = "tank")
     private List<VehicleTank> vehicleTanks = new ArrayList<>();
 
     //region constructors

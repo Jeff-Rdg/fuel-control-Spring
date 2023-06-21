@@ -1,5 +1,6 @@
 package com.jotasilva.fuelcontrol.entities;
 
+import com.jotasilva.fuelcontrol.entities.pks.VehiceTankId;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.FutureOrPresent;
 import jakarta.validation.constraints.NotNull;
@@ -13,13 +14,17 @@ import java.util.UUID;
 
 @Entity
 public class VehicleTank implements Serializable {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+    @EmbeddedId
+    private VehiceTankId id;
+
     @ManyToOne
-    private Tank tank;
-    @ManyToOne
+    @MapsId(value = "vehicleId")
     private Vehicle vehicle;
+
+    @ManyToOne
+    @MapsId(value = "tankId")
+    private Tank tank;
+
     @NotNull
     @Positive
     private Long odometer;
@@ -36,28 +41,14 @@ public class VehicleTank implements Serializable {
     // endregion
 
     // region Getters and Setters
-    public UUID getId() {
+
+
+    public VehiceTankId getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(VehiceTankId id) {
         this.id = id;
-    }
-
-    public Tank getTank() {
-        return tank;
-    }
-
-    public void setTank(Tank tank) {
-        this.tank = tank;
-    }
-
-    public Vehicle getVehicle() {
-        return vehicle;
-    }
-
-    public void setVehicle(Vehicle vehicle) {
-        this.vehicle = vehicle;
     }
 
     public Long getOdometer() {
@@ -83,6 +74,23 @@ public class VehicleTank implements Serializable {
     public void setProvisionDate(LocalDate provisionDate) {
         this.provisionDate = provisionDate;
     }
+
+    public Vehicle getVehicle() {
+        return vehicle;
+    }
+
+    public void setVehicle(Vehicle vehicle) {
+        this.vehicle = vehicle;
+    }
+
+    public Tank getTank() {
+        return tank;
+    }
+
+    public void setTank(Tank tank) {
+        this.tank = tank;
+    }
+
     // endregion
 
     // region Hashcode and Equals
