@@ -23,7 +23,7 @@ public class Vehicle implements Serializable {
     private UUID id;
     @Size(max = 50)
     private String active;
-    @Size(min = 7, max = 7)
+    @Size(max = 7)
     private String plate;
     @Column(length = 30)
     private Long odometer;

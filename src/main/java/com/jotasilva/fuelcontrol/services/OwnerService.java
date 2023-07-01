@@ -1,8 +1,10 @@
 package com.jotasilva.fuelcontrol.services;
 
+import com.jotasilva.fuelcontrol.dtos.OwnerDTO;
 import com.jotasilva.fuelcontrol.entities.Owner;
 import com.jotasilva.fuelcontrol.repositories.OwnerRepository;
 import com.jotasilva.fuelcontrol.services.interfaces.IOwnerService;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -25,8 +27,12 @@ public class OwnerService implements IOwnerService {
     }
 
     @Override
-    public Owner create(Owner owner) {
-        return null;
+    public Owner create(OwnerDTO ownerDto) {
+        Owner owner = new Owner();
+        // formatação de atributos
+
+        BeanUtils.copyProperties(ownerDto, owner);
+        return repository.save(owner);
     }
 
     @Override
