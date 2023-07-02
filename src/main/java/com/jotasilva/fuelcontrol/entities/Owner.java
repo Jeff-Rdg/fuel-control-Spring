@@ -14,7 +14,7 @@ public class Owner implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
-    @Size(max = 14)
+    @Size(min = 14, max = 14)
     private String cnpj;
     @Size(max = 150)
     private String corporateName;
