@@ -21,13 +21,14 @@ public class OwnerController {
     private OwnerService service;
 
     @GetMapping
-    @Operation(summary = "Retornar todos os Proprietários")
+    @Operation(summary = "Listar todos os Proprietários.")
     public ResponseEntity<List<Owner>> findAll() {
         List<Owner> owners = service.findAll();
         return ResponseEntity.status(HttpStatus.OK).body(owners);
     }
 
     @PostMapping
+    @Operation(summary = "Criar um novo Proprietário.")
     public ResponseEntity<Owner> create(@RequestBody @Valid OwnerDTO ownerDto) {
         Owner owner = service.create(ownerDto);
 
