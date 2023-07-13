@@ -6,10 +6,12 @@ import com.jotasilva.fuelcontrol.repositories.TankRepository;
 import com.jotasilva.fuelcontrol.services.interfaces.ITankService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.UUID;
 
+@Service
 public class TankService implements ITankService {
     @Autowired
     private TankRepository repository;
