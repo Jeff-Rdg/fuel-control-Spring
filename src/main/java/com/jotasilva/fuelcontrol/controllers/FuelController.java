@@ -1,9 +1,7 @@
 package com.jotasilva.fuelcontrol.controllers;
 
 import com.jotasilva.fuelcontrol.dtos.FuelDTO;
-import com.jotasilva.fuelcontrol.dtos.OwnerDTO;
 import com.jotasilva.fuelcontrol.entities.Fuel;
-import com.jotasilva.fuelcontrol.entities.Owner;
 import com.jotasilva.fuelcontrol.services.FuelService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
