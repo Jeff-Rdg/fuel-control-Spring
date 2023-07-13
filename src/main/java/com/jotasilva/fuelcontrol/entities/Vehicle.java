@@ -1,5 +1,6 @@
 package com.jotasilva.fuelcontrol.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.jotasilva.fuelcontrol.entities.enums.Situation;
 import com.jotasilva.fuelcontrol.entities.enums.VehicleType;
 import jakarta.persistence.*;
@@ -44,6 +45,7 @@ public class Vehicle implements Serializable {
     @JoinColumn(name = "owner_id")
     private Owner owner;
 
+    @JsonIgnore
     @OneToMany(mappedBy = "vehicle")
     private List<VehicleTank> vehicleTanks = new ArrayList<>();
     //endregion
