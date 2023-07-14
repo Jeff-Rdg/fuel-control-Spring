@@ -2,7 +2,7 @@ package com.jotasilva.fuelcontrol.controllers;
 
 import com.jotasilva.fuelcontrol.dtos.OwnerDTO;
 import com.jotasilva.fuelcontrol.entities.Owner;
-import com.jotasilva.fuelcontrol.services.OwnerService;
+import com.jotasilva.fuelcontrol.services.OwnerServiceImpl;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
@@ -18,7 +18,7 @@ import java.util.List;
 @RequestMapping("/api/owner")
 public class OwnerController {
     @Autowired
-    private OwnerService service;
+    private OwnerServiceImpl service;
 
     @GetMapping
     @Operation(summary = "Listar todos os Proprietários.")

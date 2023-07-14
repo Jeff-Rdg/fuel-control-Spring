@@ -2,7 +2,7 @@ package com.jotasilva.fuelcontrol.controllers;
 
 import com.jotasilva.fuelcontrol.dtos.FuelDTO;
 import com.jotasilva.fuelcontrol.entities.Fuel;
-import com.jotasilva.fuelcontrol.services.FuelService;
+import com.jotasilva.fuelcontrol.services.FuelServiceImpl;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
@@ -18,7 +18,7 @@ import java.util.List;
 @RequestMapping("/api/fuel")
 public class FuelController {
     @Autowired
-    private FuelService service;
+    private FuelServiceImpl service;
 
     @GetMapping
     @Operation(summary = "Listar todos os Combustíveis comprados.")

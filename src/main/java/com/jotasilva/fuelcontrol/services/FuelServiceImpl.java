@@ -3,7 +3,7 @@ package com.jotasilva.fuelcontrol.services;
 import com.jotasilva.fuelcontrol.dtos.FuelDTO;
 import com.jotasilva.fuelcontrol.entities.Fuel;
 import com.jotasilva.fuelcontrol.repositories.FuelRepository;
-import com.jotasilva.fuelcontrol.services.interfaces.IFuelService;
+import com.jotasilva.fuelcontrol.services.interfaces.FuelService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.UUID;
 
 @Service
-public class FuelService implements IFuelService {
+public class FuelServiceImpl implements FuelService {
     @Autowired
     private FuelRepository repository;
 
@@ -27,10 +27,10 @@ public class FuelService implements IFuelService {
     }
 
     @Override
-    public Fuel create(FuelDTO fuelDTO) {
+    public Fuel create(FuelDTO entityDTO) {
         Fuel fuel = new Fuel();
 
-        BeanUtils.copyProperties(fuelDTO, fuel);
+        BeanUtils.copyProperties(entityDTO, fuel);
         return repository.save(fuel);
     }
 
@@ -40,7 +40,7 @@ public class FuelService implements IFuelService {
     }
 
     @Override
-    public Fuel update(UUID id, Fuel owner) {
+    public Fuel update(UUID id, Fuel entity) {
         return null;
     }
 }

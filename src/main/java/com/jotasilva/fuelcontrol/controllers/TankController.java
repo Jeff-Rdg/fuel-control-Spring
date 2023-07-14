@@ -2,7 +2,7 @@ package com.jotasilva.fuelcontrol.controllers;
 
 import com.jotasilva.fuelcontrol.dtos.TankDTO;
 import com.jotasilva.fuelcontrol.entities.Tank;
-import com.jotasilva.fuelcontrol.services.TankService;
+import com.jotasilva.fuelcontrol.services.TankServiceImpl;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
@@ -18,7 +18,7 @@ import java.util.List;
 @RequestMapping("/api/tank")
 public class TankController {
     @Autowired
-    private TankService service;
+    private TankServiceImpl service;
 
     @GetMapping
     @Operation(summary = "Listar todos os tanques.")
